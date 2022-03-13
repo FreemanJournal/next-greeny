@@ -14,15 +14,15 @@ export default function HeaderTop() {
                         <div className="col-md-5 col-lg-3">
                             <div className="header-top-select">
                                 <div className="header-select"><i className="icofont-world"></i>
-                                    <select className="select">
-                                        <option value="english" selected>english</option>
+                                    <select className="select" defaultValue='english'>
+                                        <option value="english">english</option>
                                         <option value="bangali">bangali</option>
                                         <option value="arabic">arabic</option>
                                     </select>
                                 </div>
                                 <div className="header-select"><i className="icofont-money"></i>
-                                    <select className="select">
-                                        <option value="english" selected>doller</option>
+                                    <select className="select" defaultValue='english'>
+                                        <option value="english">doller</option>
                                         <option value="bangali">pound</option>
                                         <option value="arabic">taka</option>
                                     </select>

@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&amp;display=swap");
-
 :root {
     --h1size: 50px;
     --h2size: 40px;
@@ -387,7 +386,7 @@ button:focus {
 }
 
 .btn {
-    border: none;
+    /* border: none; */
     font-size: 15px;
     font-weight: 500;
     text-transform: uppercase;
@@ -410,7 +409,7 @@ button:focus {
     background: var(--primary)
 }
 
-.btn-inline:hover {
+.btn-inline:hover{
     color: var(--primary);
     background: var(--white)
 }
@@ -486,6 +485,7 @@ button:focus {
 }
 
 .dropdown-link::before {
+    display: none;
     position: absolute;
     top: 50%;
     right: 18px;
@@ -499,7 +499,7 @@ button:focus {
     -webkit-transition: all linear .3s;
     -moz-transition: all linear .3s;
     -ms-transition: all linear .3s;
-    -o-transition: all linear .3s
+    -o-transition: all linear .3s;
 }
 
 .dropdown-link.active {
@@ -546,6 +546,7 @@ button:focus {
 }
 
 .dropdown-list li a::before {
+    display: none;
     position: absolute;
     top: 50%;
     left: 15px;
