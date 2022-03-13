@@ -5,6 +5,7 @@ import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import '../styles/globals.css'
+import '../styles/index.css'
 config.autoAddCss = false
 library.add(faCheckSquare, faCoffee)
 function MyApp({ Component, pageProps }) {

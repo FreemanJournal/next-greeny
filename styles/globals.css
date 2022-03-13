@@ -1204,7 +1204,10 @@ button:focus {
     -ms-transition: all linear .3s;
     -o-transition: all linear .3s
 }
-
+.product-add:hover{
+    background: var(--primary);
+    color: var(--intro-bg);
+}
 .product-add i {
     font-size: 14px;
     margin-right: 5px
@@ -2164,9 +2167,10 @@ tbody tr td:last-child {
 }
 
 .feature-widget {
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
+    display: flex; */
+    display: none;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
