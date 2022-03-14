@@ -7,6 +7,10 @@ import NavSidebar from '../components/Header/NavbarPart/NavSidebar'
 import RecentlySoldProducts from '../components/RecentProducts/RecentlySoldProducts'
 import Promotion from '../components/Promotion/Promotion'
 import FeatureProducts from '../components/FeaturedProducts/FeatureProducts'
+import CountDown from '../components/CountDown/CountDown'
+import Feedback from '../components/Feedback/Feedback'
+import Articles from '../components/Articles/Articles'
+import FooterPart from '../components/Footer/FooterPart'
 export default function Home() {
   return (
     <>
@@ -18,6 +22,10 @@ export default function Home() {
     <RecentlySoldProducts/>
     <Promotion/>
     <FeatureProducts/>
+    <CountDown/>
+    <Feedback/>
+    <Articles/>
+    <FooterPart/>
 
     
     </>
