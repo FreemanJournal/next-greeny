@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
-import { FaHeart, FaRandom, FaTimes } from 'react-icons/fa';
+import { FaHeart, FaTimes } from 'react-icons/fa';
+import Cart from '../../Cart/Cart';
 import NavSidebar from '../NavbarPart/NavSidebar';
 export default function HeaderPart() {
     const [showSearch, setShowSearch] = useState(false)
     const [showNavSideBar, setShowNavSideBar] = useState(false);
-
+    const [showCartSideBar, setShowCartSideBar] = useState(false)
 
 
     const mobileSearchHandler = () => {
@@ -42,16 +43,11 @@ export default function HeaderPart() {
                         <button><i className="fas fa-search"><AiOutlineSearch className='me-5' /></i></button>
                     </form>
                     <div className="header-widget-group">
-                        <a href="compare.html" className="header-widget" title="Compare List">
-                            <i className="fas fa-shopping-basket">
-                                <FaRandom />
-                            </i><sup>0</sup>
-                        </a>
+                       
                         <a href="wishlist.html" className="header-widget" title="Wishlist">
                             <i className="fas fa-shopping-basket"><FaHeart /></i><sup>0</sup>
                         </a>
-                        <button className="header-widget header-cart" title="Cartlist">
-
+                        <button className="header-widget header-cart" title="Cartlist" onClick={()=>setShowCartSideBar(prev => !prev)}>
                             <i className="fas fa-shopping-basket"><AiOutlineShoppingCart /></i><sup>9+</sup>
                             <span>total price<small>$345.00</small></span>
                         </button>
@@ -59,6 +55,7 @@ export default function HeaderPart() {
                 </div>
             </div>
             <NavSidebar show={showNavSideBar} setShowNavSideBar={setShowNavSideBar}/>
+            <Cart show = {showCartSideBar} setShowCartSideBar={setShowCartSideBar}/>
            
         </header>
     )

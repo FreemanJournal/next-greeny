@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import Image from 'next/image'
-import { FaRandom, FaAngleRight, FaTimes } from 'react-icons/fa';
+import Image from 'next/image';
+import React, { useState } from 'react';
 import { AiOutlineLine } from 'react-icons/ai';
+import { FaAngleRight, FaTimes } from 'react-icons/fa';
 const prevSubmenu = []
 export default function NavSidebar({ show,setShowNavSideBar }) {
     const [showSubmenu, setShowSubmenu] = useState(false)
