@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { FaTimes, FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
 export default function Cart({ show, setShowCartSideBar }) {
     const [showCoupon, setShowCoupon] = useState(false);
+    const onChangeHandler = () =>{
+
+    }
     return (
+        <>
         <aside className={`cart-sidebar ${show && 'active'}`}>
             <div className="cart-header">
                 <div className="cart-total"><i className="fas fa-shopping-basket"></i><span>total item (5)</span></div>
@@ -21,7 +25,7 @@ export default function Cart({ show, setShowCartSideBar }) {
                         </div>
                         <div className="cart-action-group">
                             <div className="product-action"><button className="action-minus" title="Quantity Minus"><i
-                                className="icofont-minus"> <FaMinus /></i></button><input className="action-input"
+                                className="icofont-minus"> <FaMinus /></i></button><input onChange={onChangeHandler} className="action-input"
                                     title="Quantity Number" type="text" name="quantity" value="1" /><button
                                         className="action-plus" title="Quantity Plus"><i className="icofont-plus"> <FaPlus /></i></button></div>
                             <h6>$56.98</h6>
@@ -38,7 +42,7 @@ export default function Cart({ show, setShowCartSideBar }) {
                         </div>
                         <div className="cart-action-group">
                             <div className="product-action"><button className="action-minus" title="Quantity Minus"><i
-                                className="icofont-minus"> <FaMinus /></i></button><input className="action-input"
+                                className="icofont-minus"> <FaMinus /></i></button><input onChange={onChangeHandler} className="action-input"
                                     title="Quantity Number" type="text" name="quantity" value="1" /><button
                                         className="action-plus" title="Quantity Plus"><i className="icofont-plus"> <FaPlus /></i></button></div>
                             <h6>$56.98</h6>
@@ -55,7 +59,7 @@ export default function Cart({ show, setShowCartSideBar }) {
                         </div>
                         <div className="cart-action-group">
                             <div className="product-action"><button className="action-minus" title="Quantity Minus"><i
-                                className="icofont-minus"> <FaMinus /></i></button><input className="action-input"
+                                className="icofont-minus"> <FaMinus /></i></button><input onChange={onChangeHandler} className="action-input"
                                     title="Quantity Number" type="text" name="quantity" value="1" /><button
                                         className="action-plus" title="Quantity Plus"><i className="icofont-plus"> <FaPlus /></i></button></div>
                             <h6>$56.98</h6>
@@ -72,7 +76,7 @@ export default function Cart({ show, setShowCartSideBar }) {
                         </div>
                         <div className="cart-action-group">
                             <div className="product-action"><button className="action-minus" title="Quantity Minus"><i
-                                className="icofont-minus"> <FaMinus /></i></button><input className="action-input"
+                                className="icofont-minus"> <FaMinus /></i></button><input onChange={onChangeHandler} className="action-input"
                                     title="Quantity Number" type="text" name="quantity" value="1" /><button
                                         className="action-plus" title="Quantity Plus"><i className="icofont-plus"> <FaPlus /></i></button></div>
                             <h6>$56.98</h6>
@@ -89,7 +93,7 @@ export default function Cart({ show, setShowCartSideBar }) {
                         </div>
                         <div className="cart-action-group">
                             <div className="product-action"><button className="action-minus" title="Quantity Minus"><i
-                                className="icofont-minus"> <FaMinus /></i></button><input className="action-input"
+                                className="icofont-minus"> <FaMinus /></i></button><input onChange={onChangeHandler} className="action-input"
                                     title="Quantity Number" type="text" name="quantity" value="1" /><button
                                         className="action-plus" title="Quantity Plus"><i className="icofont-plus"> <FaPlus /></i></button></div>
                             <h6>$56.98</h6>
@@ -100,7 +104,7 @@ export default function Cart({ show, setShowCartSideBar }) {
             <div className="cart-footer">
                 <button className="coupon-btn" onClick={()=>setShowCoupon(prev => !prev)}>Do you have a coupon code?</button>
                 <div className="coupon-form" style={{display:`${showCoupon?'flex':'none'}`}}>
-                    <input type="text" placeholder="Enter your coupon code" />
+                    <input onChange={onChangeHandler} type="text" placeholder="Enter your coupon code" />
                     <button type="submit"><span>apply</span></button>
                 </div>
                 <a className="cart-checkout-btn" href="checkout.html">
@@ -109,5 +113,6 @@ export default function Cart({ show, setShowCartSideBar }) {
                 </a>
             </div>
         </aside>
+        </>
     )
 }

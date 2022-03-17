@@ -2,6 +2,7 @@ import React from 'react';
 import ContactNumber from './ContactNumber';
 import DeliveryAddress from './DeliveryAddress';
 import DeliverySchedule from './DeliverySchedule';
+import MultiStepForm from './MultiStepForm/MultiStepForm';
 import Orders from './Orders';
 import PaymentInfo from './PaymentInfo';
 
@@ -9,7 +10,7 @@ export default function Checkout() {
  
     return (
         <>
-            <section className="inner-section single-banner" style={{ background: 'url(images/single-banner.jpg) no-repeat center;' }}>
+            <section className="inner-section single-banner" style={{ background: 'url(images/single-banner.jpg) no-repeat center' }}>
                 <div className="container">
                     <h2>checkout</h2>
                     <ol className="breadcrumb">
@@ -27,11 +28,12 @@ export default function Checkout() {
                                 <p>Returning customer? <a href="login.html">Click here to login</a></p>
                             </div>
                         </div>
-                        <Orders />
+                        {/* <Orders />
                         <DeliverySchedule />
                         <ContactNumber />
                         <DeliveryAddress />
-                        <PaymentInfo />
+                        <PaymentInfo /> */}
+                        <MultiStepForm/>
                     </div>
                 </div>
             </section>
