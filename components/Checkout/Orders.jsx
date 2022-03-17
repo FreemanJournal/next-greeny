@@ -1,15 +1,45 @@
-import React, { useState } from 'react'
-import { FaEye} from 'react-icons/fa'
-import {  FiTrash } from 'react-icons/fi'
+import Image from 'next/image';
+import React, { useState } from 'react';
+import { FaEye } from 'react-icons/fa';
+import { FiTrash } from 'react-icons/fi';
+import PaginationComponent from './Pagination';
 import ProductViewModal from './ProductViewModal';
 
+const database = [
+    { serial: '01', img: '/images/product/01.jpg', name: "Tomato", price: "19", brand: "Fresh Company", quantity: 4 },
+    { serial: '02', img: '/images/product/02.jpg', name: "Gazar", price: "19", brand: "Radhuni Masala", quantity: 4 },
+    { serial: '03', img: '/images/product/03.jpg', name: "Shosha", price: "19", brand: "Fresh Company", quantity: 4 },
+    { serial: '04', img: '/images/product/04.jpg', name: "Eggplant", price: "19", brand: "Radhuni Masala", quantity: 4 },
+    { serial: '05', img: '/images/product/05.jpg', name: "Ladyfinger", price: "19", brand: "Pran Prio", quantity: 4 },
+    { serial: '06', img: '/images/product/01.jpg', name: "Tomato", price: "19", brand: "Fresh Company", quantity: 4 },
+    { serial: '07', img: '/images/product/02.jpg', name: "Gazar", price: "19", brand: "Radhuni Masala", quantity: 4 },
+    { serial: '08', img: '/images/product/03.jpg', name: "Shosha", price: "19", brand: "Fresh Company", quantity: 4 },
+    { serial: '09', img: '/images/product/04.jpg', name: "Eggplant", price: "19", brand: "Radhuni Masala", quantity: 4 },
+    { serial: '10', img: '/images/product/05.jpg', name: "Ladyfinger", price: "19", brand: "Pran Prio", quantity: 4 },
+    { serial: '11', img: '/images/product/05.jpg', name: "Ladyfinger", price: "19", brand: "Pran Prio", quantity: 4 },
+    { serial: '12', img: '/images/product/05.jpg', name: "Ladyfinger", price: "19", brand: "Pran Prio", quantity: 4 },
+]
 
 export default function Orders() {
     const [showCoupon, setShowCoupon] = useState(false);
-    const [showModal, setShowModal] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage, setProductsPerPage] = useState(5);
+    const [modalShow, setModalShow] = useState(false);
+
+    const lastProductNumber = currentPage * productsPerPage;
+    const firstProductIndex = lastProductNumber - productsPerPage;
+    const limitedProducts = database.slice(
+        firstProductIndex,
+        lastProductNumber
+    );
+
+
     return (
         <>
-            <ProductViewModal showModal={showModal} setShowModal={setShowModal} />
+            <ProductViewModal 
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+             />
             <div className="col-lg-12">
                 <div className="account-card">
                     <div className="account-title">
@@ -30,135 +60,74 @@ export default function Orders() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td className="table-serial">
-                                            <h6>01</h6>
-                                        </td>
-                                        <td className="table-image"><img src="images/product/01.jpg" alt="product" /></td>
-                                        <td className="table-name">
-                                            <h6>product name</h6>
-                                        </td>
-                                        <td className="table-price">
-                                            <h6>$19<small>/kilo</small></h6>
-                                        </td>
-                                        <td className="table-brand">
-                                            <h6>Fresh Company</h6>
-                                        </td>
-                                        <td className="table-quantity">
-                                            <h6>3</h6>
-                                        </td>
-                                        <td className="table-action">
-                                            <a className="view" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view" onClick={() => setShowModal(prev => !prev)} >
-                                                <i className="fas fa-eye">
-                                                    <FaEye />
-                                                </i>
-                                            </a>
-                                            <a className="trash" href="#" title="Remove Wishlist">
-                                                <i className="icofont-trash">
-                                                    <FiTrash />
-                                                </i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="table-serial">
-                                            <h6>02</h6>
-                                        </td>
-                                        <td className="table-image"><img src="images/product/02.jpg" alt="product" /></td>
-                                        <td className="table-name">
-                                            <h6>product name</h6>
-                                        </td>
-                                        <td className="table-price">
-                                            <h6>$19<small>/kilo</small></h6>
-                                        </td>
-                                        <td className="table-brand">
-                                            <h6>Radhuni Masala</h6>
-                                        </td>
-                                        <td className="table-quantity">
-                                            <h6>5</h6>
-                                        </td>
-                                        <td className="table-action"><a className="view" title="Quick View"
-                                            data-bs-toggle="modal" data-bs-target="#product-view" onClick={() => setShowModal(prev => !prev)}><i
-                                                className="fas fa-eye">
-                                                <FaEye /></i></a><a className="trash" href="#"
-                                                    title="Remove Wishlist"><i className="icofont-trash">
-                                                    <FiTrash /></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td className="table-serial">
-                                            <h6>03</h6>
-                                        </td>
-                                        <td className="table-image"><img src="images/product/03.jpg" alt="product" /></td>
-                                        <td className="table-name">
-                                            <h6>product name</h6>
-                                        </td>
-                                        <td className="table-price">
-                                            <h6>$19<small>/kilo</small></h6>
-                                        </td>
-                                        <td className="table-brand">
-                                            <h6>Pran Prio</h6>
-                                        </td>
-                                        <td className="table-quantity">
-                                            <h6>2</h6>
-                                        </td>
-                                        <td className="table-action"><a className="view" title="Quick View"
-                                            data-bs-toggle="modal" data-bs-target="#product-view" onClick={() => setShowModal(prev => !prev)}><i
-                                                className="fas fa-eye">
-                                                <FaEye /></i></a><a className="trash" href="#"
-                                                    title="Remove Wishlist"><i className="icofont-trash">
-                                                    <FiTrash /></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td className="table-serial">
-                                            <h6>04</h6>
-                                        </td>
-                                        <td className="table-image"><img src="images/product/04.jpg" alt="product" /></td>
-                                        <td className="table-name">
-                                            <h6>product name</h6>
-                                        </td>
-                                        <td className="table-price">
-                                            <h6>$19<small>/kilo</small></h6>
-                                        </td>
-                                        <td className="table-brand">
-                                            <h6>Real Food</h6>
-                                        </td>
-                                        <td className="table-quantity">
-                                            <h6>3</h6>
-                                        </td>
-                                        <td className="table-action"><a className="view" title="Quick View"
-                                            data-bs-toggle="modal" data-bs-target="#product-view" onClick={() => setShowModal(prev => !prev)}><i
-                                                className="fas fa-eye">
-                                                <FaEye /></i></a><a className="trash" href="#"
-                                                    title="Remove Wishlist"><i className="icofont-trash">
-                                                    <FiTrash /></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td className="table-serial">
-                                            <h6>05</h6>
-                                        </td>
-                                        <td className="table-image"><img src="images/product/05.jpg" alt="product" /></td>
-                                        <td className="table-name">
-                                            <h6>product name</h6>
-                                        </td>
-                                        <td className="table-price">
-                                            <h6>$19<small>/kilo</small></h6>
-                                        </td>
-                                        <td className="table-brand">
-                                            <h6>Rdhuni Company</h6>
-                                        </td>
-                                        <td className="table-quantity">
-                                            <h6>7</h6>
-                                        </td>
-                                        <td className="table-action"><a className="view" title="Quick View"
-                                            data-bs-toggle="modal" data-bs-target="#product-view" onClick={() => setShowModal(prev => !prev)}><i
-                                                className="fas fa-eye">
-                                                <FaEye /></i></a><a className="trash" href="#"
-                                                    title="Remove Wishlist"><i className="icofont-trash">
-                                                    <FiTrash /></i></a></td>
-                                    </tr>
+                                    {
+                                        limitedProducts.map((item, index) => {
+                                            const { serial, img, name, price, brand, quantity } = item
+                                            return (
+                                                <tr key={index}>
+                                                    <td className="table-serial">
+                                                        <h6>{serial}</h6>
+                                                    </td>
+                                                    <td className="table-image position-relative">
+                                                        <Image src={img} alt="product" layout='fill' className='p-3' />
+                                                    </td>
+                                                    <td className="table-name">
+                                                        <h6>{name}</h6>
+                                                    </td>
+                                                    <td className="table-price">
+                                                        <h6>${price}<small>/kilo</small></h6>
+                                                    </td>
+                                                    <td className="table-brand">
+                                                        <h6>{brand}</h6>
+                                                    </td>
+                                                    <td className="table-quantity">
+                                                        <h6>{quantity}</h6>
+                                                    </td>
+                                                    <td className="table-action">
+                                                        <a className="view" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view" onClick={() => setModalShow(prev => !prev)} >
+                                                            <i className="fas fa-eye">
+                                                                <FaEye />
+                                                            </i>
+                                                        </a>
+                                                        <a className="trash" href="#" title="Remove Wishlist">
+                                                            <i className="icofont-trash">
+                                                                <FiTrash />
+                                                            </i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+
+                                            )
+                                        })
+                                    }
+
                                 </tbody>
                             </table>
                         </div>
+                        <div className="row">
+                            <div className="col-lg-12">
+                                <div className="bottom-paginate">
+                                    <p className="page-info">Showing {lastProductNumber} of {database.length} Results</p>
+                                    <ul className="pagination">
+                                        <PaginationComponent
+                                            itemsCount={database.length}
+                                            itemsPerPage={productsPerPage}
+                                            currentPage={currentPage}
+                                            setCurrentPage={setCurrentPage}
+                                            alwaysShown={false}
+                                        />
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
                         <div className="chekout-coupon"><button className="coupon-btn" onClick={() => setShowCoupon(prev => !prev)}>Do you have a coupon code?</button>
                             <div className="coupon-form" style={{ display: `${showCoupon ? 'flex' : 'none'}` }}>
                                 <input type="text" placeholder="Enter your coupon code" />

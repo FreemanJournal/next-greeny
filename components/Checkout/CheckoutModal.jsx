@@ -1,22 +1,16 @@
-import { Button, Modal } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import { FaTimes } from 'react-icons/fa'
 import ModalDialog from 'react-bootstrap/ModalDialog'
 import { useEffect, useState } from 'react'
 export default function CheckoutModal(props) {
 
     const { onHide, title, options, data } = props
-   
+
     const initValue = data && +(data?.number)
     const [updateData, setUpdateData] = useState(initValue) //initial value only update on first render - re-rendering does not set the initial value
 
-    useEffect(()=>setUpdateData(initValue),[initValue])
-   
-    
+    useEffect(() => setUpdateData(initValue), [initValue])
     const onChangeHandler = ({ target: { name, value } }) => { setUpdateData(value) }
-
-     
-
-
     // const onChangeHandler = ({target:{name,value}})=>{setUpdateData({ ...updateData, [name]: value })}
 
     return (

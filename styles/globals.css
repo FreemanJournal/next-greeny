@@ -1308,9 +1308,9 @@ tbody tr td:last-child {
     text-transform: capitalize
 }
 
-.table-image img {
+.table-image{
     width: auto;
-    height: 100px
+    height: 150px;
 }
 
 .table-price h6 {
