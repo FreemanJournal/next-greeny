@@ -20,7 +20,7 @@
   
   .section {
     width: 95%;
-    max-width: 550px;
+    /* max-width: 550px; */
     margin: 30px auto;
   }
   
@@ -48,7 +48,7 @@
   
   .wizardLayout{
     margin: 5px auto;
-    padding: 30px 50px;
+    /* padding: 30px 50px; */
     /* background-color: salmon; */
     /* border-bottom: 1px solid #bbb; */
   }

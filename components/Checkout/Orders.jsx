@@ -5,6 +5,8 @@ import { FiTrash } from 'react-icons/fi';
 import PaginationComponent from './Pagination';
 import ProductViewModal from './ProductViewModal';
 
+
+
 const database = [
     { serial: '01', img: '/images/product/01.jpg', name: "Tomato", price: "19", brand: "Fresh Company", quantity: 4 },
     { serial: '02', img: '/images/product/02.jpg', name: "Gazar", price: "19", brand: "Radhuni Masala", quantity: 4 },
@@ -61,7 +63,7 @@ export default function Orders() {
                                 </thead>
                                 <tbody>
                                     {
-                                        limitedProducts.map((item, index) => {
+                                        database.map((item, index) => {
                                             const { serial, img, name, price, brand, quantity } = item
                                             return (
                                                 <tr key={index}>
@@ -96,15 +98,13 @@ export default function Orders() {
                                                         </a>
                                                     </td>
                                                 </tr>
-
                                             )
                                         })
                                     }
-
                                 </tbody>
                             </table>
                         </div>
-                        <div className="row">
+                        {/* <div className="row">
                             <div className="col-lg-12">
                                 <div className="bottom-paginate">
                                     <p className="page-info">Showing {lastProductNumber} of {database.length} Results</p>
@@ -120,7 +120,7 @@ export default function Orders() {
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
 
 
@@ -140,7 +140,11 @@ export default function Orders() {
                                 <li><span>delivery fee</span><span>$10.00</span></li>
                                 <li><span>discount</span><span>$00.00</span></li>
                                 <li><span>Total<small>(Incl. VAT)</small></span><span>$277.00</span></li>
+                                <li><span>Pay In Cash</span><span>$00.00</span></li>
+                                <li><span>Due</span><span>$00.00</span></li>
+                                
                             </ul>
+                            <button className="form-btn" type="button">Complete the purchase</button>
                         </div>
                     </div>
                 </div>

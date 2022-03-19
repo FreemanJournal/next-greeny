@@ -48,11 +48,11 @@ export default function PaymentInfo() {
                             </div>
                         </div>
                     </div>
-                    <div className="checkout-check"><input type="checkbox" id="checkout-check" /><label
-                        htmlFor="checkout-check">By making this purchase you agree to our <a href="#">Terms and
-                            Conditions</a>.</label></div>
-                    <div className="checkout-proced"><a href="invoice.html" className="btn btn-inline">proced to
-                        checkout</a></div>
+                    <div className="checkout-check">
+                        <input type="checkbox" id="checkout-check" />
+                        <label htmlFor="checkout-check">By making this purchase you agree to our <a href="#">Terms and Conditions</a>.</label>
+                    </div>
+                    <div className="checkout-proced"><a href="invoice.html" className="btn btn-inline">proced to checkout</a></div>
                 </div>
             </div>
             <div className="modal fade show" id="payment-add">

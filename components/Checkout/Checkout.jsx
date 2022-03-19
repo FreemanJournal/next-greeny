@@ -23,17 +23,14 @@ export default function Checkout() {
             <section className="inner-section checkout-part">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-12">
+                        {/* <div className="col-lg-12">
                             <div className="alert-info">
                                 <p>Returning customer? <a href="login.html">Click here to login</a></p>
                             </div>
-                        </div>
-                        {/* <Orders />
-                        <DeliverySchedule />
-                        <ContactNumber />
-                        <DeliveryAddress />
-                        <PaymentInfo /> */}
+                        </div> */}
+                        {/* <Orders /> */}
                         <MultiStepForm/>
+                       
                     </div>
                 </div>
             </section>

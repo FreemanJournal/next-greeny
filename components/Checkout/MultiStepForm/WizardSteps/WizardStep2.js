@@ -23,8 +23,8 @@ export default function WizardStep2 (props){
 
       <div className={styles.wizardLayoutButtons}>
         <button
-          key={2}
           className={styles.artButton}
+          key={2}
           disabled={!props.form.nickname}
           onClick={() => props.wizard.nextStep()}
         >

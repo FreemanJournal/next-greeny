@@ -3,12 +3,13 @@ import WizardStep2 from "../../../components/Checkout/MultiStepForm/WizardSteps/
 import WizardStep3 from "../../../components/Checkout/MultiStepForm/WizardSteps/WizardStep3";
 import WizardStep4 from "../../../components/Checkout/MultiStepForm/WizardSteps/WizardStep4";
 import WizardStep5 from "../../../components/Checkout/MultiStepForm/WizardSteps/WizardStep5";
+import OrderSummary from "./FormSteps/OrderSummary/OrderSummary";
 
 
 export default function WizardSteps (props){
   switch (props.step) {
     case "intro":
-      return <WizardStep1 {...props} />;
+      return <OrderSummary {...props} />;
 
     case "name":
       return <WizardStep2 {...props} />;

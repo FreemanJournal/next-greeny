@@ -15,13 +15,13 @@ export default function MultiStepForm() {
     return (
         <div>
 
-            <header>
+            {/* <header>
                 <h1>A linear wizard (with numbers)</h1>
             </header>
 
             <section className={styles.section}>
                 <WizardDescription />
-            </section>
+            </section> */}
 
             <section className={styles.section}>
                 <WizardSteps {...{ step, wizard, form, dispatchForm }} />
