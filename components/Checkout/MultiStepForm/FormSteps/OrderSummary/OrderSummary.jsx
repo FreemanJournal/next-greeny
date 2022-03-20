@@ -6,26 +6,44 @@ import CartItem from './CartItem';
 
 const DELIVERY_FEE = 100
 let DISCOUNT_RATE = .1
-const database = [
-    { serial: '01', img: '/images/product/01.jpg', name: "Tomato", price: "10", brand: "Fresh Company", quantity: 4 },
-    { serial: '02', img: '/images/product/02.jpg', name: "Gazar", price: "10", brand: "Radhuni Masala", quantity: 4 },
-    { serial: '03', img: '/images/product/03.jpg', name: "Shosha", price: "30", brand: "Fresh Company", quantity: 4 },
-    { serial: '04', img: '/images/product/04.jpg', name: "Eggplant", price: "10", brand: "Radhuni Masala", quantity: 4 },
-    { serial: '05', img: '/images/product/05.jpg', name: "Ladyfinger", price: "10", brand: "Pran Prio", quantity: 4 },
-    { serial: '06', img: '/images/product/01.jpg', name: "Tomato", price: "10", brand: "Fresh Company", quantity: 4 },
-    { serial: '07', img: '/images/product/02.jpg', name: "Gazar", price: "30", brand: "Radhuni Masala", quantity: 4 },
-    { serial: '08', img: '/images/product/03.jpg', name: "Shosha", price: "10", brand: "Fresh Company", quantity: 4 },
-    { serial: '09', img: '/images/product/04.jpg', name: "Eggplant", price: "10", brand: "Radhuni Masala", quantity: 4 },
-    { serial: '10', img: '/images/product/05.jpg', name: "Ladyfinger", price: "20", brand: "Pran Prio", quantity: 4 },
-    { serial: '11', img: '/images/product/05.jpg', name: "Ladyfinger", price: "30", brand: "Pran Prio", quantity: 4 },
-    { serial: '12', img: '/images/product/05.jpg', name: "Ladyfinger", price: "10", brand: "Pran Prio", quantity: 4 },
-]
+
 export default function OrderSummary(props) {
+    const [data, setData] = useState([]);
     const [showCoupon, setShowCoupon] = useState(false);
     const [subTotal, setSubTotal] = useState(0)
     const [allTotal, setAllTotal] = useState({});
     const [promoCode, setPromoCode] = useState();
     const [discount, setDiscount] = useState(0);
+
+
+    let total = (subTotal + DELIVERY_FEE - discount)
+
+    const updateProducts = () => {
+        if (typeof window !== 'undefined') {
+            setData(JSON.parse(localStorage.getItem('cartProduct')))
+        }
+        let totalSum = Object.values(allTotal).reduce((sum, item) => sum += item, 0)
+        setSubTotal(totalSum)
+        setDiscount(0)
+        console.log(data.length);
+
+        // if (typeof window !== 'undefined' && data.length !== 0) {
+        //     localStorage.setItem('cartProduct',JSON.stringify(data))
+        //     setData(JSON.parse(localStorage.getItem('cartProduct')))
+
+        // }
+
+    }
+
+    const deleteHandler = (serial) => {
+        const restData = data.filter(item => item.serial !== serial)
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('cartProduct', JSON.stringify(restData))
+        }
+        updateProducts();
+        // setSubTotal(0)
+    }
+
 
     const onClickHandler = () => {
         if (promoCode === 'promo') {
@@ -35,14 +53,9 @@ export default function OrderSummary(props) {
         setDiscount(0)
     }
 
-    let total = (subTotal + DELIVERY_FEE - discount)
 
-    useEffect(() => {
-        let totalSum = Object.values(allTotal).reduce((sum, item) => sum += item, 0)
-        setSubTotal(totalSum)
-        setDiscount(0)
 
-    }, [allTotal])
+    useEffect(updateProducts, [allTotal])
     return (
         <WizardLayout {...props}>
             <div className="col-lg-12">
@@ -55,13 +68,13 @@ export default function OrderSummary(props) {
                             <div className="col-md-12 col-lg-12">
                                 <div className="">
                                     <div className="cart-header">
-                                        <div className="cart-total"><i className="fas fa-shopping-basket"></i><span>total item ({database.length})</span></div>
+                                        <div className="cart-total"><i className="fas fa-shopping-basket"></i><span>total item ({data?.length})</span></div>
                                     </div>
                                     <ul className="cart-list">
                                         {
-                                            database.map((item, index) => {
+                                            data?.map((item, index) => {
 
-                                                return (<CartItem item={item} key={index} index={index} allTotal={allTotal} setAllTotal={setAllTotal} />)
+                                                return (<CartItem item={item} key={index} index={index} allTotal={allTotal} setAllTotal={setAllTotal} deleteHandler={deleteHandler} />)
                                             })
                                         }
 

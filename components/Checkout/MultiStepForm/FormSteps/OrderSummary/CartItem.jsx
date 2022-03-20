@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FaTimes, FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
 import Image from 'next/image'
 
-export default function CartItem({index,item,allTotal,setAllTotal}) {
+export default function CartItem({index,deleteHandler,item,allTotal,setAllTotal}) {
     const { serial, img, name, price, brand, quantity } = item
     const [productQtn, setProductQtn] = useState(quantity)
   
@@ -23,7 +23,7 @@ export default function CartItem({index,item,allTotal,setAllTotal}) {
                 <a href="" className='position-relative d-block' style={{ height: "100px" }}>
                     <Image src={img} alt="product" layout='fill' />
                 </a>
-                <button className="cart-delete">
+                <button className="cart-delete" onClick={()=>deleteHandler(serial)}>
                     <i className="far fa-trash-alt"> <FaTrashAlt /></i>
                 </button>
             </div>

@@ -1,4 +1,4 @@
-const products = [
+export const products = [
     { serial: '01', img: '/images/product/01.jpg', name: "Tomato", price: "10", brand: "Fresh Company", quantity: 4 },
     { serial: '02', img: '/images/product/02.jpg', name: "Gazar", price: "10", brand: "Radhuni Masala", quantity: 4 },
     { serial: '03', img: '/images/product/03.jpg', name: "Shosha", price: "30", brand: "Fresh Company", quantity: 4 },
