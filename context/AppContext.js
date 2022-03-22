@@ -5,28 +5,29 @@ const AppContext = createContext();
 
 
 export function AppWrapper({ children }) {
-    const [state, dispatch] = useReducer(AppReducer,initialState);
+    const [state, dispatch] = useReducer(AppReducer, initialState);
+    let total = state.reduce((accumulator, item) => accumulator += item.total(), 0)
     const contextValue = useMemo(() => {
-        return {state, dispatch}
-    }, [state, dispatch])
+        return { state, dispatch,total }
+    }, [state, dispatch,total])
 
     // useEffect(() => {
-    //     if (JSON.parse(localStorage.getItem("state"))) { 
-    //       //checking if there already is a state in localstorage
-    //       dispatch({
-    //         type: "init_stored",
-    //         value: JSON.parse(localStorage.getItem("state")), 
-    //         //if yes, update the current state with the stored one
-    //       });
+    //     if (JSON.parse(localStorage.getItem("state"))) {
+    //         //checking if there already is a state in localstorage
+    //         dispatch({
+    //             type: "init_stored",
+    //             value: JSON.parse(localStorage.getItem("state")),
+    //             //if yes, update the current state with the stored one
+    //         });
     //     }
-    //   }, []);
-    
-    //   useEffect(() => {
+    // }, []);
+
+    // useEffect(() => {
     //     if (state !== initialState) {
-    //       localStorage.setItem("state", JSON.stringify(state)); 
-    //       //create and/or set a new localstorage variable called "state"
+    //         localStorage.setItem("state", JSON.stringify(state));
+    //         //create and/or set a new localstorage variable called "state"
     //     }
-    //   }, [state]);
+    // }, [state]);
 
     return (
         <AppContext.Provider value={contextValue}>

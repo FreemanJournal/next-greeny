@@ -1813,7 +1813,7 @@ tbody tr td:last-child {
 }
 
 .product-label {
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
@@ -1822,7 +1822,7 @@ tbody tr td:last-child {
     flex-direction: column;
     position: absolute;
     top: 0px;
-    left: 0px
+    left: 0px; */
 }
 
 .label-text {

@@ -1,6 +1,11 @@
 import React from 'react'
+import { useAppContext } from '../../context/AppContext';
 
 export default function FeatureProducts() {
+    const { state, dispatch } = useAppContext();
+    const onChangeHandler = ()=>{
+        
+    }
     return (
         <section className="section feature-part">
             <div className="container">
@@ -35,7 +40,7 @@ export default function FeatureProducts() {
                                     olor ut eveniet commodi...</p><button className="product-add" title="Add to Cart"><i
                                         className="fas fa-shopping-basket"></i><span>add</span></button>
                                 <div className="product-action"><button className="action-minus" title="Quantity Minus"><i
-                                    className="icofont-minus"></i></button><input className="action-input"
+                                    className="icofont-minus"></i></button><input onChange={onChangeHandler} className="action-input"
                                         title="Quantity Number" type="text" name="quantity" value="1" /><button
                                             className="action-plus" title="Quantity Plus"><i className="icofont-plus"></i></button>
                                 </div>
@@ -65,7 +70,7 @@ export default function FeatureProducts() {
                                     olor ut eveniet commodi...</p><button className="product-add" title="Add to Cart"><i
                                         className="fas fa-shopping-basket"></i><span>add</span></button>
                                 <div className="product-action"><button className="action-minus" title="Quantity Minus"><i
-                                    className="icofont-minus"></i></button><input className="action-input"
+                                    className="icofont-minus"></i></button><input onChange={onChangeHandler} className="action-input"
                                         title="Quantity Number" type="text" name="quantity" value="1" /><button
                                             className="action-plus" title="Quantity Plus"><i className="icofont-plus"></i></button>
                                 </div>
@@ -95,7 +100,7 @@ export default function FeatureProducts() {
                                     olor ut eveniet commodi...</p><button className="product-add" title="Add to Cart"><i
                                         className="fas fa-shopping-basket"></i><span>add</span></button>
                                 <div className="product-action"><button className="action-minus" title="Quantity Minus"><i
-                                    className="icofont-minus"></i></button><input className="action-input"
+                                    className="icofont-minus"></i></button><input onChange={onChangeHandler} className="action-input"
                                         title="Quantity Number" type="text" name="quantity" value="1" /><button
                                             className="action-plus" title="Quantity Plus"><i className="icofont-plus"></i></button>
                                 </div>
@@ -125,7 +130,7 @@ export default function FeatureProducts() {
                                     olor ut eveniet commodi...</p><button className="product-add" title="Add to Cart"><i
                                         className="fas fa-shopping-basket"></i><span>add</span></button>
                                 <div className="product-action"><button className="action-minus" title="Quantity Minus"><i
-                                    className="icofont-minus"></i></button><input className="action-input"
+                                    className="icofont-minus"></i></button><input onChange={onChangeHandler} className="action-input"
                                         title="Quantity Number" type="text" name="quantity" value="1" /><button
                                             className="action-plus" title="Quantity Plus"><i className="icofont-plus"></i></button>
                                 </div>
@@ -155,7 +160,7 @@ export default function FeatureProducts() {
                                     olor ut eveniet commodi...</p><button className="product-add" title="Add to Cart"><i
                                         className="fas fa-shopping-basket"></i><span>add</span></button>
                                 <div className="product-action"><button className="action-minus" title="Quantity Minus"><i
-                                    className="icofont-minus"></i></button><input className="action-input"
+                                    className="icofont-minus"></i></button><input onChange={onChangeHandler} className="action-input"
                                         title="Quantity Number" type="text" name="quantity" value="1" /><button
                                             className="action-plus" title="Quantity Plus"><i className="icofont-plus"></i></button>
                                 </div>
@@ -185,7 +190,7 @@ export default function FeatureProducts() {
                                     olor ut eveniet commodi...</p><button className="product-add" title="Add to Cart"><i
                                         className="fas fa-shopping-basket"></i><span>add</span></button>
                                 <div className="product-action"><button className="action-minus" title="Quantity Minus"><i
-                                    className="icofont-minus"></i></button><input className="action-input"
+                                    className="icofont-minus"></i></button><input onChange={onChangeHandler} className="action-input"
                                         title="Quantity Number" type="text" name="quantity" value="1" /><button
                                             className="action-plus" title="Quantity Plus"><i className="icofont-plus"></i></button>
                                 </div>

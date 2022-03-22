@@ -1,5 +1,7 @@
 import React from 'react'
+import { useAppContext } from '../../../context/AppContext';
 export default function HeaderTop() {
+    const { state, dispatch } = useAppContext();
     return (
         <>
             <div className="backdrop"></div><a className="backtop fas fa-arrow-up" href="#"></a>
