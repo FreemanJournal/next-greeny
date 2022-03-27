@@ -145,28 +145,28 @@ input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
     font-size: 14px;
     color: var(--gray);
-    text-transform: capitalize
+    /* text-transform: lowercase */
 }
 
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
     font-size: 14px;
     color: var(--gray);
-    text-transform: capitalize
+    /* text-transform: lowercase */
 }
 
 input::-ms-input-placeholder,
 textarea::-ms-input-placeholder {
     font-size: 14px;
     color: var(--gray);
-    text-transform: capitalize
+    /* text-transform: lowercase */
 }
 
 input::placeholder,
 textarea::placeholder {
     font-size: 14px;
     color: var(--gray);
-    text-transform: capitalize
+    /* text-transform: lowercase */
 }
 
 input,
@@ -198,6 +198,10 @@ button:focus {
         -ms-flex-direction: column-reverse;
         flex-direction: column-reverse
     }
+}
+
+textarea.form-control {
+    min-height: calc(5.5em + .75rem + 2px);
 }
 
 .section {

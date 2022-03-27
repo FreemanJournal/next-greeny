@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { FaTimes, FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
-import Image from 'next/image'
-import WizardLayout from '../../WizardLayout';
-
 import { useAppContext } from '../../../../../context/AppContext';
 import CartItem from '../../../../Cart/CartItem';
+import WizardLayout from '../../WizardLayout';
+
 
 const DELIVERY_FEE = 100
 let DISCOUNT_RATE = .1
 
 export default function OrderSummary(props) {
+    const {grandTotal, setGrandTotal} = props
     const { state, dispatch,total} = useAppContext();
     const [data, setData] = useState([]);
     const [showCoupon, setShowCoupon] = useState(false);
@@ -19,8 +18,8 @@ export default function OrderSummary(props) {
     const [promoCode, setPromoCode] = useState();
     const [discount, setDiscount] = useState(0);
 
-
-    let grandTotal = (total + DELIVERY_FEE - discount)
+    setGrandTotal((total + DELIVERY_FEE - discount))
+  
 
     useEffect(()=>setData(state),[state])
 
@@ -36,6 +35,7 @@ export default function OrderSummary(props) {
     const onClickHandler = () => {
         if (promoCode === 'promo') {
             setDiscount((total + DELIVERY_FEE) * DISCOUNT_RATE)
+            // dispatch({ type: 'cal_grandTotal', value: grandTotal })
             return
         }
         setDiscount(0)

@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState } from 'react'
 import { useWizard } from "use-wizard";
 import formReducer from './formReducer';
 import WizardDescription from './WizardDescription';
@@ -6,11 +6,12 @@ import WizardSteps from './WizardSteps';
 import styles from './MultiStep.module.css'
 export default function MultiStepForm() {
     // This is how you create the wizard
-    const [step, wizard] = useWizard([`intro`, `name`, `animal`,
+    const [step, wizard] = useWizard([`order`, `address`, `animal`,
     `validation`, `confirmation`]);
 
     // This is only used to store user inputs
     const [form, dispatchForm] = useReducer(formReducer, {});
+    const [grandTotal, setGrandTotal] = useState(0);
 
     return (
         <div>
@@ -24,7 +25,7 @@ export default function MultiStepForm() {
             </section> */}
 
             <section className={styles.section}>
-                <WizardSteps {...{ step, wizard, form, dispatchForm }} />
+                <WizardSteps {...{ step, wizard, form, dispatchForm,grandTotal, setGrandTotal }} />
             </section>
         </div>
     )

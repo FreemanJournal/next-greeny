@@ -14,6 +14,8 @@ export const AppReducer = (state, action) => {
             }
         case 'delete_product':
             return state.filter(item => item.serial !== action.value)
+        
+
         default:
             return state;
 
