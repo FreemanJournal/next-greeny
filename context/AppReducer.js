@@ -1,5 +1,5 @@
 
-export const initialState = [];
+export const initialState = []
 
 export const AppReducer = (state, action) => {
     const { item, productQtn } = action.value

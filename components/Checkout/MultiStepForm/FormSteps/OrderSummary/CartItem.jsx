@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FaTimes, FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
 import Image from 'next/image'
 
-export default function CartItem({index,deleteHandler,item,allTotal,setAllTotal}) {
+export default function CartItem({deleteHandler,item,allTotal,setAllTotal}) {
     const { serial, img, name, price, brand, quantity } = item
     const [productQtn, setProductQtn] = useState(quantity)
   

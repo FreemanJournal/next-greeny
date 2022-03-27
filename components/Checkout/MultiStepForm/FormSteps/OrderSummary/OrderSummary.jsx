@@ -3,59 +3,59 @@ import { FaTimes, FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
 import Image from 'next/image'
 import WizardLayout from '../../WizardLayout';
 import CartItem from './CartItem';
+import { useAppContext } from '../../../../../context/AppContext';
 
 const DELIVERY_FEE = 100
 let DISCOUNT_RATE = .1
 
 export default function OrderSummary(props) {
+    const { state, dispatch,total} = useAppContext();
     const [data, setData] = useState([]);
     const [showCoupon, setShowCoupon] = useState(false);
+
+
     const [subTotal, setSubTotal] = useState(0)
     const [allTotal, setAllTotal] = useState({});
     const [promoCode, setPromoCode] = useState();
     const [discount, setDiscount] = useState(0);
 
 
-    let total = (subTotal + DELIVERY_FEE - discount)
+    let grandTotal = (total + DELIVERY_FEE - discount)
+
+    useEffect(()=>setData(state),[state])
 
     const updateProducts = () => {
-        if (typeof window !== 'undefined') {
-            setData(JSON.parse(localStorage.getItem('cartProduct')))
-        }
-        let totalSum = Object.values(allTotal).reduce((sum, item) => sum += item, 0)
-        setSubTotal(totalSum)
-        setDiscount(0)
-        console.log(data.length);
-
-        // if (typeof window !== 'undefined' && data.length !== 0) {
-        //     localStorage.setItem('cartProduct',JSON.stringify(data))
+        // if (typeof window !== 'undefined') {
         //     setData(JSON.parse(localStorage.getItem('cartProduct')))
-
         // }
+        // let totalSum = Object.values(allTotal).reduce((sum, item) => sum += item, 0)
+        // setSubTotal(totalSum)
+        // setDiscount(0)
+       
+
+    
 
     }
 
     const deleteHandler = (serial) => {
-        const restData = data.filter(item => item.serial !== serial)
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('cartProduct', JSON.stringify(restData))
-        }
-        updateProducts();
+        // const restData = data.filter(item => item.serial !== serial)
+        // if (typeof window !== 'undefined') {
+        //     localStorage.setItem('cartProduct', JSON.stringify(restData))
+        // }
+        // updateProducts();
         // setSubTotal(0)
     }
 
 
     const onClickHandler = () => {
         if (promoCode === 'promo') {
-            setDiscount((subTotal + DELIVERY_FEE) * DISCOUNT_RATE)
+            setDiscount((total + DELIVERY_FEE) * DISCOUNT_RATE)
             return
         }
         setDiscount(0)
     }
 
-
-
-    useEffect(updateProducts, [allTotal])
+    // useEffect(updateProducts, [allTotal])
     return (
         <WizardLayout {...props}>
             <div className="col-lg-12">
@@ -98,15 +98,15 @@ export default function OrderSummary(props) {
                             </div>
                             <div className="checkout-charge">
                                 <ul>
-                                    <li><span>Sub total</span><span>${subTotal}</span></li>
+                                    <li><span>Sub total</span><span>${total}</span></li>
                                     <li><span>delivery fee</span><span>${DELIVERY_FEE}.00</span></li>
                                     <li><span>discount</span><span>${discount}</span></li>
-                                    <li><span>Total<small>(Incl. VAT)</small></span><span>${total}</span></li>
+                                    <li><span>Total<small>(Incl. VAT)</small></span><span>${grandTotal}</span></li>
                                 </ul>
                                 <div className="position-absolute bottom-0 end-0 start-0" onClick={() => props.wizard.nextStep()}>
                                     <a className="cart-checkout-btn">
                                         <span className="checkout-label">Proceed to Payment</span>
-                                        <span className="checkout-price">${total}</span>
+                                        <span className="checkout-price">${grandTotal}</span>
                                     </a>
                                 </div>
                                 {/* <button className="form-btn" type="button">Complete the purchase</button> */}

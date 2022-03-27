@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { useAppContext } from '../../context/AppContext';
@@ -7,20 +8,9 @@ import CartItem from './CartItem';
 // let total = 0
 function CartSidebar({ show, setShowCartSideBar }) {
     const [showCoupon, setShowCoupon] = useState(false);
-    const { state, dispatch,total } = useAppContext();
+    const { state, dispatch, total } = useAppContext();
     const [data, setData] = useState([]);
 
-   
-
-    // useEffect(() => {
-    //     if (typeof window !== 'undefined') {
-    //         setData(JSON.parse(localStorage.getItem("state")))
-    //     }
-    // }, [])
-
-    
-  
-    
     useEffect(() => {
         setData([...state])
 
@@ -58,10 +48,14 @@ function CartSidebar({ show, setShowCartSideBar }) {
                         <input onChange={onChangeHandler} type="text" placeholder="Enter your coupon code" />
                         <button type="submit"><span>apply</span></button>
                     </div>
-                    <a className="cart-checkout-btn" href="checkout.html">
-                        <span className="checkout-label">Proceed to Checkout</span>
-                        <span className="checkout-price">${total}</span>
-                    </a>
+                    <Link href="/checkout">
+                        <a className="cart-checkout-btn">
+                            <span className="checkout-label">Proceed to Checkout</span>
+                            <span className="checkout-price">${total}</span>
+                        </a>
+
+                    </Link>
+
                 </div>
             </aside>
         </>

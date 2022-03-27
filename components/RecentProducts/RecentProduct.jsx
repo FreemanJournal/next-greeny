@@ -2,21 +2,24 @@ import React from 'react'
 import Image from 'next/image';
 import { useAppContext } from '../../context/AppContext';
 
-export default function RecentProduct({item}) {
+export default function RecentProduct({ item }) {
     const { state, dispatch } = useAppContext();
 
+    const { serial, img, name, price, brand, quantity } = item
+
     const selectedPro = state?.find(item => item?.serial === serial)
-    
+
+   
+
     function addProductHandler(item) {
         dispatch({ type: 'add_product', value: { item, productQtn: 1 } })
     }
 
-    const { serial, img, name, price, brand, quantity } = item
 
 
     return (
         <div className="col" key={serial}>
-           
+
             <div className="product-card" >
                 <div className="product-media">
                     <div className="product-label">

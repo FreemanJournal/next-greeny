@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link'
 import React, { useState } from 'react';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaHeart, FaTimes } from 'react-icons/fa';
@@ -9,11 +10,11 @@ export default function HeaderPart() {
     const [showSearch, setShowSearch] = useState(false)
     const [showNavSideBar, setShowNavSideBar] = useState(false);
     const [showCartSideBar, setShowCartSideBar] = useState(false)
-    const { state, dispatch,total } = useAppContext();
+    const { state, dispatch, total } = useAppContext();
 
     // let total = state.reduce((accumulator, item) => accumulator += item.quantity, 0)
 
-   
+
     const mobileSearchHandler = () => {
         setShowSearch(prev => !prev)
 
@@ -26,19 +27,23 @@ export default function HeaderPart() {
                         <button className="header-user position-relative" style={{ height: '3em', width: '3em' }} onClick={() => setShowNavSideBar(prev => !prev)}>
                             <Image src="/images/user.png" alt="user" layout='fill' />
                         </button>
-                        <a href="index.html">
-                            <div className="position-relative" style={{ height: '3em', width: '8em' }}>
-                                <Image src="/images/logo.png" alt="logo" layout='fill' />
-                            </div>
+                        <Link href="/">
+                            <a >
+                                <div className="position-relative" style={{ height: '3em', width: '8em' }}>
+                                    <Image src="/images/logo.png" alt="logo" layout='fill' />
+                                </div>
+                            </a>
+                        </Link>
 
-                        </a>
                         <button className="header-src" onClick={mobileSearchHandler}>
                             <i className="fas fa-search"> {showSearch ? <FaTimes /> : <AiOutlineSearch />}</i>
                         </button>
                     </div>
-                    <a href="index.html" className="header-logo">
-                        <Image src="/images/logo.png" alt="logo" height='100' width='500' />
-                    </a>
+                    <Link href='/'>
+                        <a className="header-logo">
+                            <Image src="/images/logo.png" alt="logo" height='100' width='500' />
+                        </a>
+                    </Link>
                     <a href="login.html" className="header-widget" title="My Account">
                         <Image src="/images/user.png" alt="user" height='100' width='100' /><span>John</span>
                     </a>
