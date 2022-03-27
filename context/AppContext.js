@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useReducer } from "react";
+import { createContext, useContext, useEffect, useMemo, useReducer, useState } from "react";
 import { AppReducer, initialState } from "./AppReducer";
 
 const AppContext = createContext();
@@ -6,28 +6,22 @@ const AppContext = createContext();
 
 export function AppWrapper({ children }) {
     const [state, dispatch] = useReducer(AppReducer, initialState);
-    let total = state.reduce((accumulator, item) => accumulator += item.total(), 0)
+    const [total, setTotal] = useState(0);
+
+    useEffect(() => {
+        setTotal(state.reduce((accumulator, item) => accumulator += item.total(), 0))
+        if(typeof window !== 'undefined'){
+            const localStoreData = {}
+            state.map((item)=>{
+                localStoreData[item.serial] = item.quantity
+            })
+            localStorage.setItem('productKey', JSON.stringify(localStoreData))
+        }
+    }, [state])
+
     const contextValue = useMemo(() => {
-        return { state, dispatch,total }
-    }, [state, dispatch,total])
-
-    // useEffect(() => {
-    //     if (JSON.parse(localStorage.getItem("state"))) {
-    //         //checking if there already is a state in localstorage
-    //         dispatch({
-    //             type: "init_stored",
-    //             value: JSON.parse(localStorage.getItem("state")),
-    //             //if yes, update the current state with the stored one
-    //         });
-    //     }
-    // }, []);
-
-    // useEffect(() => {
-    //     if (state !== initialState) {
-    //         localStorage.setItem("state", JSON.stringify(state));
-    //         //create and/or set a new localstorage variable called "state"
-    //     }
-    // }, [state]);
+        return { state, dispatch, total }
+    }, [state, dispatch, total])
 
     return (
         <AppContext.Provider value={contextValue}>

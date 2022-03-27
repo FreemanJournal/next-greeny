@@ -2,26 +2,18 @@
 export const initialState = [];
 
 export const AppReducer = (state, action) => {
-    const oldProduct = state.find(item => item.serial === action.value.serial)
+    const { item, productQtn } = action.value
+    const oldProduct = state?.find(product => product?.serial === item?.serial)
 
     switch (action.type) {
         case 'add_product':
             if (oldProduct) {
-                return state?.map(item => item?.serial === action?.value?.serial ? { ...item, ...(++item.quantity) } : item)
+                return state?.map(oldItem => oldItem.serial === item.serial ? { ...oldItem, ...(oldItem.quantity = productQtn === 1 ? oldItem.quantity + 1 : productQtn) } : oldItem)
             } else {
-                return [...state, action.value];
-            }
-        case 'update_product_quantity':
-            if (oldProduct) {
-                return state?.map(item => item?.serial === action?.value?.serial ? { ...item, ...(item.quantity = action.value.productQtn) } : item)
+                return [...state, item];
             }
         case 'delete_product':
-            const del_item_index = state.indexOf(state.find(item => item.serial === action.value))
-            if (del_item_index > -1) {
-                state.splice(del_item_index, 1)
-                return state;
-            }
-           
+            return state.filter(item => item.serial !== action.value)
         default:
             return state;
 

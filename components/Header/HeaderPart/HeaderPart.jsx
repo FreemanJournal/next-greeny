@@ -13,7 +13,7 @@ export default function HeaderPart() {
 
     // let total = state.reduce((accumulator, item) => accumulator += item.quantity, 0)
 
-    console.log(total, 'Hello Mom');
+   
     const mobileSearchHandler = () => {
         setShowSearch(prev => !prev)
 

@@ -11,7 +11,7 @@ export default function CartItem({ deleteHandler, item }) {
     const onChangeHandler = (value) => {
         if (value >= 0 && value % 1 === 0) {
             setProductQtn(value)
-            dispatch({ type: 'update_product_quantity', value: { serial, productQtn: +value } })
+            dispatch({ type: 'add_product', value: { item, productQtn: +value } })
         }
     }
     const onMinusHandler = () => {
@@ -46,7 +46,7 @@ export default function CartItem({ deleteHandler, item }) {
                             <i className=""> <FaMinus /></i>
                         </button>
                         <input onChange={(e) => onChangeHandler(e.target.value)} autoComplete="off" className="action-input" title="Quantity Number" type="number" name="quantity" value={productQtn} />
-                        <button className="action-plus" title="Quantity Plus" onClick={() => dispatch({ type: 'add_product', value: item })}>
+                        <button className="action-plus" title="Quantity Plus" onClick={() => dispatch({ type: 'add_product', value:{ item, productQtn : 1 } })}>
                             <i className=""> <FaPlus /></i>
                         </button>
                     </div>
