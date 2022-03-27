@@ -16,9 +16,7 @@ function CartSidebar({ show, setShowCartSideBar }) {
 
     }, [state])
 
-    const onChangeHandler = () => {
-
-    }
+    
 
     const deleteHandler = (serial) => {
         dispatch({ type: 'delete_product', value: serial })
@@ -42,12 +40,8 @@ function CartSidebar({ show, setShowCartSideBar }) {
                     }
 
                 </ul>
-                <div className="cart-footer">
-                    <button className="coupon-btn" onClick={() => setShowCoupon(prev => !prev)}>Do you have a coupon code?</button>
-                    <div className="coupon-form" style={{ display: `${showCoupon ? 'flex' : 'none'}` }}>
-                        <input onChange={onChangeHandler} type="text" placeholder="Enter your coupon code" />
-                        <button type="submit"><span>apply</span></button>
-                    </div>
+                <div className="cart-footer py-3">
+                    
                     <Link href="/checkout">
                         <a className="cart-checkout-btn">
                             <span className="checkout-label">Proceed to Checkout</span>

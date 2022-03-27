@@ -10,7 +10,7 @@ export default function Checkout() {
  
     return (
         <>
-            <section className="inner-section single-banner" style={{ background: 'url(images/single-banner.jpg) no-repeat center' }}>
+            {/* <section className="inner-section single-banner" style={{ background: 'url(images/single-banner.jpg) no-repeat center' }}>
                 <div className="container">
                     <h2>checkout</h2>
                     <ol className="breadcrumb">
@@ -19,7 +19,7 @@ export default function Checkout() {
                         <li className="breadcrumb-item active" aria-current="page">checkout</li>
                     </ol>
                 </div>
-            </section>
+            </section> */}
             <section className="inner-section checkout-part">
                 <div className="container">
                     <div className="row">

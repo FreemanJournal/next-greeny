@@ -27,7 +27,7 @@ export default function CartItem({ deleteHandler, item }) {
 
     return (
         <li className="cart-item">
-            <div className="cart-media w-50" style={{ height: "100px" }}>
+            <div className="cart-media" style={{ height: "100px",width:"50%" }}>
                 <a href="" className='position-relative d-block' style={{ height: "100px" }}>
                     <Image src={img} alt="product" layout='fill' />
                 </a>

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { FaTimes, FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
 import Image from 'next/image'
 import WizardLayout from '../../WizardLayout';
-import CartItem from './CartItem';
+
 import { useAppContext } from '../../../../../context/AppContext';
+import CartItem from '../../../../Cart/CartItem';
 
 const DELIVERY_FEE = 100
 let DISCOUNT_RATE = .1
@@ -14,8 +15,7 @@ export default function OrderSummary(props) {
     const [showCoupon, setShowCoupon] = useState(false);
 
 
-    const [subTotal, setSubTotal] = useState(0)
-    const [allTotal, setAllTotal] = useState({});
+
     const [promoCode, setPromoCode] = useState();
     const [discount, setDiscount] = useState(0);
 
@@ -24,26 +24,12 @@ export default function OrderSummary(props) {
 
     useEffect(()=>setData(state),[state])
 
-    const updateProducts = () => {
-        // if (typeof window !== 'undefined') {
-        //     setData(JSON.parse(localStorage.getItem('cartProduct')))
-        // }
-        // let totalSum = Object.values(allTotal).reduce((sum, item) => sum += item, 0)
-        // setSubTotal(totalSum)
-        // setDiscount(0)
-       
-
-    
-
-    }
+  
 
     const deleteHandler = (serial) => {
-        // const restData = data.filter(item => item.serial !== serial)
-        // if (typeof window !== 'undefined') {
-        //     localStorage.setItem('cartProduct', JSON.stringify(restData))
-        // }
-        // updateProducts();
-        // setSubTotal(0)
+        dispatch({ type: 'delete_product', value: serial })
+        setData([...state])
+
     }
 
 
@@ -55,7 +41,7 @@ export default function OrderSummary(props) {
         setDiscount(0)
     }
 
-    // useEffect(updateProducts, [allTotal])
+    
     return (
         <WizardLayout {...props}>
             <div className="col-lg-12">
@@ -74,7 +60,7 @@ export default function OrderSummary(props) {
                                         {
                                             data?.map((item, index) => {
 
-                                                return (<CartItem item={item} key={index} index={index} allTotal={allTotal} setAllTotal={setAllTotal} deleteHandler={deleteHandler} />)
+                                                return (<CartItem item={item} key={index}  deleteHandler={deleteHandler} />)
                                             })
                                         }
 
@@ -103,13 +89,13 @@ export default function OrderSummary(props) {
                                     <li><span>discount</span><span>${discount}</span></li>
                                     <li><span>Total<small>(Incl. VAT)</small></span><span>${grandTotal}</span></li>
                                 </ul>
-                                <div className="position-absolute bottom-0 end-0 start-0" onClick={() => props.wizard.nextStep()}>
+                                <div className="position-absolute bottom-0 end-0 start-0" role='button' onClick={() => props.wizard.nextStep()}>
                                     <a className="cart-checkout-btn">
                                         <span className="checkout-label">Proceed to Payment</span>
                                         <span className="checkout-price">${grandTotal}</span>
                                     </a>
                                 </div>
-                                {/* <button className="form-btn" type="button">Complete the purchase</button> */}
+                               
                             </div>
                         </div>
                     </div>
