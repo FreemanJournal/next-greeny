@@ -4,16 +4,15 @@ import CartItem from '../../../../Cart/CartItem';
 import WizardLayout from '../../WizardLayout';
 
 
-const DELIVERY_FEE = 100
-let DISCOUNT_RATE = .1
+
 
 export default function OrderSummary(props) {
     const {grandTotal, setGrandTotal} = props
     const { state, dispatch,total} = useAppContext();
     const [data, setData] = useState([]);
     const [showCoupon, setShowCoupon] = useState(false);
-
-
+    const DELIVERY_FEE = total && 100 || 0
+    let DISCOUNT_RATE = .1
 
     const [promoCode, setPromoCode] = useState();
     const [discount, setDiscount] = useState(0);
@@ -35,7 +34,6 @@ export default function OrderSummary(props) {
     const onClickHandler = () => {
         if (promoCode === 'promo') {
             setDiscount((total + DELIVERY_FEE) * DISCOUNT_RATE)
-            // dispatch({ type: 'cal_grandTotal', value: grandTotal })
             return
         }
         setDiscount(0)
@@ -91,7 +89,7 @@ export default function OrderSummary(props) {
                                 </ul>
                                 <div className="position-absolute bottom-0 end-0 start-0" role='button' onClick={() => props.wizard.nextStep()}>
                                     <a className="cart-checkout-btn">
-                                        <span className="checkout-label">Proceed to Payment</span>
+                                        <span className="checkout-label">Confirm Order</span>
                                         <span className="checkout-price">${grandTotal}</span>
                                     </a>
                                 </div>

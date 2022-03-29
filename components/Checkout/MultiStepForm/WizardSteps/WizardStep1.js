@@ -5,7 +5,6 @@ export default function WizardStep1(props) {
 
   return (
     <WizardLayout {...props}>
-
       <form className="modal-form">
         <div className="form-group">
           <label className="form-label">number</label>

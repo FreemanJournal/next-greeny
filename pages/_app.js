@@ -9,6 +9,7 @@ import "../node_modules/slick-carousel/slick/slick-theme.css"
 import '../styles/globals.css'
 import '../styles/index.css'
 import './checkout/checkout.css'
+import '../styles/user-auth.css'
 import { AppWrapper } from '../context/AppContext'
 config.autoAddCss = false
 library.add(faCheckSquare, faCoffee)

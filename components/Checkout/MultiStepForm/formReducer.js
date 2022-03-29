@@ -1,4 +1,4 @@
-export default function formReducer (previousState, action){
+export default function formReducer(previousState, action) {
     switch (action.type) {
         case "RESET":
             return {};
