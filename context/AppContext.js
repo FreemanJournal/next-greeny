@@ -32,8 +32,11 @@ export function AppWrapper({ children }) {
         }
     }, [state])
 
+    
+
     const contextValue = useMemo(() => {
-        return { state, dispatch, total }
+        const disDiv = {pointerEvents:"none",opacity:".5"}
+        return { state, dispatch, total,disDiv }
     }, [state, dispatch, total])
 
     return (

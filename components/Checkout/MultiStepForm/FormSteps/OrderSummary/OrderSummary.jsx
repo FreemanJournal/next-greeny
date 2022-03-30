@@ -7,8 +7,8 @@ import WizardLayout from '../../WizardLayout';
 
 
 export default function OrderSummary(props) {
-    const {grandTotal, setGrandTotal} = props
-    const { state, dispatch,total} = useAppContext();
+    const { grandTotal, setGrandTotal } = props
+    const { state, dispatch, total, disDiv } = useAppContext();
     const [data, setData] = useState([]);
     const [showCoupon, setShowCoupon] = useState(false);
     const DELIVERY_FEE = total && 100 || 0
@@ -18,11 +18,11 @@ export default function OrderSummary(props) {
     const [discount, setDiscount] = useState(0);
 
     setGrandTotal((total + DELIVERY_FEE - discount))
-  
 
-    useEffect(()=>setData(state),[state])
 
-  
+    useEffect(() => setData(state), [state])
+
+
 
     const deleteHandler = (serial) => {
         dispatch({ type: 'delete_product', value: serial })
@@ -39,7 +39,7 @@ export default function OrderSummary(props) {
         setDiscount(0)
     }
 
-    
+
     return (
         <WizardLayout {...props}>
             <div className="col-lg-12">
@@ -47,7 +47,7 @@ export default function OrderSummary(props) {
                     <div className="account-title">
                         <h4>Your order</h4>
                     </div>
-                    <div className="d-flex gap-3">
+                    <div className="d-flex gap-3" style={{minHeight:"25em"}}>
                         <div className="w-50">
                             <div className="col-md-12 col-lg-12">
                                 <div className="">
@@ -58,12 +58,12 @@ export default function OrderSummary(props) {
                                         {
                                             data?.map((item, index) => {
 
-                                                return (<CartItem item={item} key={index}  deleteHandler={deleteHandler} />)
+                                                return (<CartItem item={item} key={index} deleteHandler={deleteHandler} />)
                                             })
                                         }
 
                                     </ul>
-                                    <div className="cart-footer">
+                                    <div className="cart-footer" style={total=== 0 ? disDiv :{}}>
                                         <button className="coupon-btn" onClick={() => setShowCoupon(prev => !prev)}>Do you have a coupon code?</button>
                                         <p className="coupon-btn text-muted text-decoration-none ">Use `promo` for 10% discount </p>
                                         <div className="coupon-form" style={{ display: `${showCoupon ? 'flex' : 'none'}` }}>
@@ -87,13 +87,18 @@ export default function OrderSummary(props) {
                                     <li><span>discount</span><span>${discount}</span></li>
                                     <li><span>Total<small>(Incl. VAT)</small></span><span>${grandTotal}</span></li>
                                 </ul>
-                                <div className="position-absolute bottom-0 end-0 start-0" role='button' onClick={() => props.wizard.nextStep()}>
+                                <div
+                                    className="position-absolute bottom-0 end-0 start-0"
+                                    role='button'
+                                    style={total === 0 ? disDiv : {}}
+                                    onClick={() => props.wizard.nextStep()}
+                                >
                                     <a className="cart-checkout-btn">
                                         <span className="checkout-label">Confirm Order</span>
                                         <span className="checkout-price">${grandTotal}</span>
                                     </a>
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>

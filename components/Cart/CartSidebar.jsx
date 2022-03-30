@@ -8,7 +8,7 @@ import CartItem from './CartItem';
 // let total = 0
 function CartSidebar({ show, setShowCartSideBar }) {
     const [showCoupon, setShowCoupon] = useState(false);
-    const { state, dispatch, total } = useAppContext();
+    const { state, dispatch, total, disDiv } = useAppContext();
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ function CartSidebar({ show, setShowCartSideBar }) {
 
     }, [state])
 
-    
+
 
     const deleteHandler = (serial) => {
         dispatch({ type: 'delete_product', value: serial })
@@ -40,17 +40,27 @@ function CartSidebar({ show, setShowCartSideBar }) {
                     }
 
                 </ul>
-                <div className="cart-footer py-3">
-                    
-                    <Link href="/checkout">
-                        <a className="cart-checkout-btn">
+                <div className="cart-footer py-3" style={total === 0 ? disDiv : {}}>
+
+                    <Link href="/checkout" className="">
+                        <a className="cart-checkout-btn mb-2">
                             <span className="checkout-label">Proceed to Checkout</span>
                             <span className="checkout-price">${total}</span>
                         </a>
 
                     </Link>
+                    <div role="button" onClick={() => dispatch({type:'clear_cart', value: total})}>
+                        <a className="cart-checkout-btn" style={total === 0 ? { pointerEvents: "none", opacity: ".5", background: "red" } : { background: "red" }}>
+                            <span className="checkout-label">Clear All Items</span>
+                            <span className="checkout-price">${total}</span>
+                        </a>
+
+                    </div>
 
                 </div>
+
+
+
             </aside>
         </>
     )

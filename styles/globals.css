@@ -4886,7 +4886,7 @@ tbody tr td:last-child {
 .cart-list {
     height: 100%;
     padding: 0px 15px;
-    max-height: calc(100vh - 140px);
+    max-height: calc(100vh - 200px);
     overflow-y: scroll
 }
 
@@ -5054,7 +5054,7 @@ tbody tr td:last-child {
     margin-bottom: 18px;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
+    /* display: flex; */
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;

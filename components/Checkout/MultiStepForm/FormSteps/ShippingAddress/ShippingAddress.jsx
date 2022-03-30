@@ -12,12 +12,13 @@ export default function ShippingAddress(props) {
 
   const { grandTotal } = props
 
-  const { state, dispatch, total } = useAppContext();
+  const { state, dispatch, total,disDiv } = useAppContext();
 
   const [item, setItem] = useState({
     name: 'Total',
     description: 'Thank you!',
-    image: 'shorturl.at/ctMX7',
+    image: 'shorturl.at/fxGNR',
+    // image: '/images/thank.jpg',
     quantity: 1,
     price: grandTotal,
   });
@@ -151,17 +152,20 @@ export default function ShippingAddress(props) {
                       <h6>Total<small>(Incl. VAT)</small></h6>
                       <p>${grandTotal}</p>
                     </li>
+                    <li>
+                      <h6>Test card number</h6>
+                      <p>4242424242424242</p>
+                    </li>
                   </ul>
                   <div
                     className="position-absolute bottom-0 end-0 start-0"
                     role='button'
-                    
+                    style={!props.form.name || !props.form.email || !props.form.phone || !props.form.address ? disDiv :{}}
                     onClick={createCheckOutSession}
 
                   >
-                    <p>4242424242424242</p>
                     {/* <div className="position-absolute bottom-0 end-0 start-0" role='button' onClick={() => props.wizard.nextStep()}> */}
-                    <a className="cart-checkout-btn" role='button' disabled={!props.form.name || !props.form.email || !props.form.phone || !props.form.address}>
+                    <a className="cart-checkout-btn" role='button'>
                       <span className="checkout-label">Proceed to payment</span>
                       <span className="checkout-price">${grandTotal}</span>
                     </a>
