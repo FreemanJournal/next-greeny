@@ -39,6 +39,17 @@ export default function OrderSummary(props) {
         setDiscount(0)
     }
 
+    const onSubmitHandler = (props) =>{
+        fetch("/api/orders",{
+            method:"POST",
+            headers:{
+                "Content-type":"application/json"
+            },
+            body:JSON.stringify([...state])
+        })
+        props.wizard.nextStep();
+    }
+
 
     return (
         <WizardLayout {...props}>
@@ -91,7 +102,7 @@ export default function OrderSummary(props) {
                                     className="position-absolute bottom-0 end-0 start-0"
                                     role='button'
                                     style={total === 0 ? disDiv : {}}
-                                    onClick={() => props.wizard.nextStep()}
+                                    onClick={() => onSubmitHandler(props)}
                                 >
                                     <a className="cart-checkout-btn">
                                         <span className="checkout-label">Confirm Order</span>
